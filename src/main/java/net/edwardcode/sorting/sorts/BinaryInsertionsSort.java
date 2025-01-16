@@ -24,8 +24,10 @@ public class BinaryInsertionsSort implements SortingAlgorithm {
     public List<MainKey> sort(List<MainKey> input, int count) {
         List<MainKey> in = new ArrayList<>(input);
 
-        for (int i = 1; i < count; i++) { // Start from 1 since the first element is already "sorted"
-            System.out.print("Sorted " + i + " / " + count + " (" + ((i*100)/count) + "%)\r");
+        for (int i = 1; i < count; i++) {
+            if (System.getenv("SHOWPROGRESS") != null) {
+                System.out.print("Sorted " + i + " / " + count + " (" + ((i*100)/count) + "%)\r");
+            }
             MainKey key = in.get(i);
             int lo = 0, hi = i - 1;
 

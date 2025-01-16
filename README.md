@@ -15,3 +15,9 @@ Fundamental structures and algorithms homework
 1. Install Python3 and python3 `requests` package: \
 `pip install requests`
 2. Run `generator.py` file. It will download FIO database and then generate data.
+
+### Environment variables
+| Variable       | Description                                                           |
+|----------------|-----------------------------------------------------------------------|
+| `DEBUG`        | Print various debug information used for debugging sorting algorithms |
+| `SHOWPROGRESS` | Enable progress bar in binary insertions sort                         |
