@@ -11,4 +11,7 @@ Fundamental structures and algorithms homework
 * Sort 1: Binary insertions, descending
 * Sort 2: Merge recursive, ascending
 
-### Input data
+### How to generate input data (input.csv)
+1. Install Python3 and python3 `requests` package: \
+`pip install requests`
+2. Run `generator.py` file. It will download FIO database and then generate data.

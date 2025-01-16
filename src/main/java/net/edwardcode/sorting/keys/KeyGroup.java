@@ -2,12 +2,12 @@ package net.edwardcode.sorting.keys;
 
 import java.util.regex.Pattern;
 
-public class KeyType1 extends BasicKey {
+public class KeyGroup extends BasicKey {
     public GroupEducationType type;
     public int num;
     private static final Pattern GROUP_PATTERN = Pattern.compile("([БСМ])([0-9]{4})");
 
-    public KeyType1(String value) {
+    public KeyGroup(String value) {
         if (!GROUP_PATTERN.matcher(value).matches()) {
             throw new InvalidKeyException("String is not a valid key: " + value);
         }
@@ -17,15 +17,15 @@ public class KeyType1 extends BasicKey {
         this.num = num;
     }
 
-    public KeyType1(GroupEducationType type, int num) {
+    public KeyGroup(GroupEducationType type, int num) {
         this.type = type;
         this.num = num;
     }
 
     @Override
     public int compare(BasicKey v1) {
-        KeyType1 k1 = this;
-        KeyType1 k2 = (KeyType1) v1;
+        KeyGroup k1 = this;
+        KeyGroup k2 = (KeyGroup) v1;
         if (k1.type.getType() < k2.type.getType()) {
             return -1;
         }
