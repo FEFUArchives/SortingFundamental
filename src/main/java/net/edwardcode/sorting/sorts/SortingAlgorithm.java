@@ -1,8 +1,9 @@
 package net.edwardcode.sorting.sorts;
 
-import net.edwardcode.sorting.keys.BasicKey;
-import java.util.LinkedList;
+import net.edwardcode.sorting.keys.MainKey;
+
+import java.util.List;
 
 public interface SortingAlgorithm {
-    LinkedList<BasicKey> sort(LinkedList<BasicKey> input, int count);
+    List<MainKey> sort(List<MainKey> input, int count);
 }
