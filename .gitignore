@@ -1,5 +1,4 @@
-/data.csv
-/input.csv
+*.csv
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
