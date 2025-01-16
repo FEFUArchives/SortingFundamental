@@ -1,4 +1,4 @@
 package net.edwardcode.sorting.keys;
 
-public record MainKey(KeyType1 key1, KeyType2 key2) {
+public record MainKey(KeyGroup key1, KeyFIO key2, int lineNumber) {
 }
