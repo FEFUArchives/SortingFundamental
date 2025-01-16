@@ -4,7 +4,9 @@ import net.edwardcode.sorting.keys.KeyFIO;
 import net.edwardcode.sorting.keys.KeyGroup;
 import net.edwardcode.sorting.keys.MainKey;
 import net.edwardcode.sorting.sorts.BinaryInsertionsSort;
+import net.edwardcode.sorting.sorts.RecursiveMergeSort;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -51,11 +53,36 @@ public class Main {
         System.out.println("-".repeat(("Will be sorting only " + lineCount + " keys...").length()));
 
         // 1. Binary insertions sort
-        BinaryInsertionsSort binaryInsertionsSort = new BinaryInsertionsSort(false, true);
+        long time1 = System.currentTimeMillis();
+        BinaryInsertionsSort binaryInsertionsSort = new BinaryInsertionsSort(true, false);
         List<MainKey> sorted1 = binaryInsertionsSort.sort(keys, lineCount);
+        long time2 = System.currentTimeMillis();
+        long timeInsertions = time2 - time1;
+        System.out.println("Sorting with method 1 took " + timeInsertions + " ms");
 
-        for (MainKey key : sorted1) {
-            System.out.println(key);
+        // 2. Recursive merge sort
+        time1 = System.currentTimeMillis();
+        RecursiveMergeSort recursiveMergeSort = new RecursiveMergeSort(false, true);
+        List<MainKey> sorted2 = recursiveMergeSort.sort(keys, lineCount);
+        time2 = System.currentTimeMillis();
+        long timeMerge = time2 - time1;
+        System.out.println("Sorting with method 2 took " + timeMerge + " ms");
+
+        System.out.println("Writing resulting files...");
+        saveInformation(lineCount, sorted1, timeInsertions, "output_insertions.csv");
+
+        saveInformation(lineCount, sorted2, timeMerge, "output_merge.csv");
+
+    }
+
+    private static void saveInformation(int lineCount, List<MainKey> sorted2, long timeMerge, String fileName) throws IOException {
+        FileWriter writer = new FileWriter(fileName);
+        for (int j = 0; j < lineCount; j++) {
+            MainKey key = sorted2.get(j);
+            writer.write(key.key1() + "," + key.key2() + "," + key.lineNumber() + "\n");
         }
+        writer.write(timeMerge + "\n");
+        writer.flush();
+        writer.close();
     }
 }
