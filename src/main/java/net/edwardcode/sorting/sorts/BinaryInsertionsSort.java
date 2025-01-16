@@ -55,6 +55,28 @@ public class BinaryInsertionsSort implements SortingAlgorithm {
             DebugUtils.printListWithSlash(in, i + 1);
         }
 
+        if (System.getenv("STABILITY") != null) {
+            checkStability(input, in);
+        }
+
         return in;
+    }
+    // Method to check stability
+    private void checkStability(List<MainKey> original, List<MainKey> sorted) {
+        for (int i = 1; i < sorted.size(); i++) {
+            MainKey current = sorted.get(i - 1);
+            MainKey next = sorted.get(i);
+
+            // If primary keys are equal, check the order of secondary keys
+            if (getKey(current).compare(getKey(next)) == 0) {
+                int originalIndexCurrent = original.indexOf(current);
+                int originalIndexNext = original.indexOf(next);
+                if (originalIndexCurrent > originalIndexNext) {
+                    System.out.println("[STABILITY CHECK] Sorting is not stable!");
+                    return;
+                }
+            }
+        }
+        System.out.println("[STABILITY CHECK] Sorting is stable.");
     }
 }

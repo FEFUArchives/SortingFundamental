@@ -22,3 +22,4 @@ Fundamental structures and algorithms homework
 | `DEBUG`         | Print various debug information used for debugging sorting algorithms              |
 | `SHOWPROGRESS`  | Enable progress bar in binary insertions sort                                      |
 | `USECOMPARATOR` | Use self-written comparator in FIO comparation (only Russian language supported!!) |
+| `STABILITY`     | Enable stability checking for methods                                              |
