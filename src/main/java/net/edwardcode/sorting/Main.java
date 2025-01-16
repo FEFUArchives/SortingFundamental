@@ -3,6 +3,7 @@ package net.edwardcode.sorting;
 import net.edwardcode.sorting.keys.KeyFIO;
 import net.edwardcode.sorting.keys.KeyGroup;
 import net.edwardcode.sorting.keys.MainKey;
+import net.edwardcode.sorting.sorts.BinaryInsertionsSort;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -49,6 +50,12 @@ public class Main {
         System.out.println("Will be sorting only " + lineCount + " keys...");
         System.out.println("-".repeat(("Will be sorting only " + lineCount + " keys...").length()));
 
-        //
+        // 1. Binary insertions sort
+        BinaryInsertionsSort binaryInsertionsSort = new BinaryInsertionsSort(false, true);
+        List<MainKey> sorted1 = binaryInsertionsSort.sort(keys, lineCount);
+
+        for (MainKey key : sorted1) {
+            System.out.println(key);
+        }
     }
 }

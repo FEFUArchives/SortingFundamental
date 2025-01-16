@@ -65,6 +65,6 @@ public class KeyGroup extends BasicKey {
 
     @Override
     public String toString() {
-        return String.valueOf(type.getType()) + num;
+        return type.getType() + addLeadZeros();
     }
 }
