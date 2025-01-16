@@ -17,7 +17,8 @@ Fundamental structures and algorithms homework
 2. Run `generator.py` file. It will download FIO database and then generate data.
 
 ### Environment variables
-| Variable       | Description                                                           |
-|----------------|-----------------------------------------------------------------------|
-| `DEBUG`        | Print various debug information used for debugging sorting algorithms |
-| `SHOWPROGRESS` | Enable progress bar in binary insertions sort                         |
+| Variable        | Description                                                                        |
+|-----------------|------------------------------------------------------------------------------------|
+| `DEBUG`         | Print various debug information used for debugging sorting algorithms              |
+| `SHOWPROGRESS`  | Enable progress bar in binary insertions sort                                      |
+| `USECOMPARATOR` | Use self-written comparator in FIO comparation (only Russian language supported!!) |
