@@ -54,7 +54,7 @@ public class Main {
 
         // 1. Binary insertions sort
         long time1 = System.currentTimeMillis();
-        BinaryInsertionsSort binaryInsertionsSort = new BinaryInsertionsSort(true, false);
+        BinaryInsertionsSort binaryInsertionsSort = new BinaryInsertionsSort(false, false);
         List<MainKey> sorted1 = binaryInsertionsSort.sort(keys, lineCount);
         long time2 = System.currentTimeMillis();
         long timeInsertions = time2 - time1;
