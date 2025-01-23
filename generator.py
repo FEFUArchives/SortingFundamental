@@ -5,23 +5,18 @@ import re
 import os
 import requests
 
-# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Regex pattern for valid FIO
 FIO_PATTERN = re.compile(r"^([-А-ЯЁа-яё]+) ([-А-ЯЁа-яё]+) ([-А-ЯЁа-яё]+)$")
 
-# Function to generate a random group ID
 def generate_group():
     group_type = random.choice(['Б', 'М', 'С'])
     group_number = random.randint(0, 9999)  # Allow numbers to start with zero
     return f"{group_type}{group_number:04}"  # Ensure zero-padding to 4 digits
 
-# Function to format FIO properly (capitalize each part)
 def format_fio(fio):
     return " ".join(part.capitalize() for part in fio.split())
 
-# Function to read FIO from the CSV file
 def read_fio_from_csv(file_path):
     fio_list = []
     with open(file_path, 'r', encoding='utf-8') as csv_file:
@@ -36,7 +31,6 @@ def read_fio_from_csv(file_path):
     logging.info(f"Read {len(fio_list)} valid FIO entries from the file.")
     return fio_list
 
-# Function to generate groups and assign FIO
 def generate_groups_and_assign_fio(fio_list, total_groups=1000000, duplicate_percentage=10):
     logging.info("Starting group and FIO generation...")
     # Calculate unique and duplicate group counts
@@ -79,7 +73,6 @@ def generate_groups_and_assign_fio(fio_list, total_groups=1000000, duplicate_per
 
     return list(zip(all_groups, all_fio))
 
-# Function to save the result to a CSV file
 def save_to_csv(data, output_file):
     logging.info(f"Saving data to {output_file}...")
     with open(output_file, 'w', encoding='utf-8', newline='') as csv_file:
@@ -87,7 +80,6 @@ def save_to_csv(data, output_file):
         writer.writerows(data)
     logging.info(f"Data saved to {output_file}.")
 
-# Function to download the file if it doesn't exist
 def download_file_if_missing(file_path, url):
     if not os.path.exists(file_path):
         logging.info(f"File {file_path} not found. Downloading from {url}...")
@@ -105,16 +97,10 @@ if __name__ == "__main__":
     output_csv = "input.csv"
     data_url = "https://acdn.edwardcode.net/edu/fsdia/fios.csv"
 
-    # Ensure the input file exists or download it
     download_file_if_missing(input_csv, data_url)
-
-    # Read FIO from CSV
     fio_list = read_fio_from_csv(input_csv)
 
-    # Generate groups and assign FIO
     result = generate_groups_and_assign_fio(fio_list)
-
-    # Save the result to a CSV file
     save_to_csv(result, output_csv)
 
     logging.info(f"Generated data saved to {output_csv}")
